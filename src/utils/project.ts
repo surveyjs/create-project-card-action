@@ -21,7 +21,7 @@ export const getUserProject = async(projectName: string, logger: Logger, octokit
 
 export const getProjectIds = async(projectName: string, logger: Logger, octokit: Octokit, context: Context): Promise<Array<number>> => {
   const projectIds: Array<number> = [];
-  for (const generator of [getRepoProject, getOrgProject, getUserProject]) {
+  for (const generator of [getOrgProject]) {
     const projectId = await generator(projectName, logger, octokit, context);
     if (undefined !== projectId) {
       projectIds.push(projectId);
